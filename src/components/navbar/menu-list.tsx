@@ -28,9 +28,9 @@ const MenuList = () => {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
-                    <div className="mb-2 mt-4 text-lg font-medium">
+                    <h3 className="mb-2 mt-4 text-lg font-medium">
                       Dracon Shop
-                    </div>
+                    </h3>
                     <p className="text-sm leading-tight text-muted-foreground">
                       Sumérgete en el apasionante mundo del café con nuestra web
                     </p>
@@ -53,7 +53,7 @@ const MenuList = () => {
           <NavigationMenuTrigger>Cafes</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {categories.map((category) => (
+              {CATEGORIES.map((category) => (
                 <ListItem
                   key={category.title}
                   title={category.title}
@@ -94,7 +94,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <h4 className="text-sm font-medium leading-none">{title}</h4>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
@@ -105,7 +105,7 @@ const ListItem = React.forwardRef<
 });
 ListItem.displayName = "ListItem";
 
-const categories: { title: string; href: string; description: string }[] = [
+const CATEGORIES: { title: string; href: string; description: string }[] = [
   {
     title: "Cafe grano",
     href: "/category/grano",

@@ -2,8 +2,9 @@
 
 import { Heart, ShoppingCart, User } from "lucide-react";
 import { useRouter } from "next/navigation";
+
 import { MenuList } from "./menu-list";
-import ItemsMenuMobile from "@/ui/items-menu-mobile";
+import { ItemsMenuMobile } from "@/components/navbar/items-menu-mobile";
 
 const NavBar = () => {
   const router = useRouter();
@@ -24,13 +25,13 @@ const NavBar = () => {
       <h1 className="text-3xl" onClick={handleGoToHome}>
         Dracon <span className="font-bold">Shop</span>
       </h1>
-      <div className="items-center justify-between hidden sm:flex">
+      <section className="items-center justify-between hidden sm:flex">
         <MenuList />
-      </div>
+      </section>
       <nav className="flex sm:hidden">
         <ItemsMenuMobile />
       </nav>
-      <div className="flex items-center justify-between gap-2 sm:gap-7">
+      <section className="flex items-center justify-between gap-2 sm:gap-7">
         <ShoppingCart
           className="cursor-pointer"
           strokeWidth={1}
@@ -42,7 +43,7 @@ const NavBar = () => {
           onClick={handleGoToLovedProducts}
         />
         <User className="cursor-pointer" strokeWidth={1} />
-      </div>
+      </section>
     </aside>
   );
 };
