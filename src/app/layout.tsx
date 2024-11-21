@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { NavBar } from "@/components/navbar/navbar";
 import { Footer } from "@/components/layout/footer";
 
@@ -28,14 +29,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NavBar />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NavBar />
+          {children}
 
-        <Footer />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
