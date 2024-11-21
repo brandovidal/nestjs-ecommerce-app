@@ -3,7 +3,10 @@
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/ui/carousel'
+import { Card, CardContent } from '@/ui/card'
+import { Carousel, CarouselContent, CarouselItem } from '@/ui/carousel'
+
+import Autoplay from 'embla-carousel-autoplay'
 
 interface CarouselProps {
   title: string
@@ -11,7 +14,7 @@ interface CarouselProps {
   link: string
 }
 
-const CAROUSEL: CarouselProps[] = [
+const CAROUSEL_BANNER: CarouselProps[] = [
   {
     id: 1,
     title: 'Envio en 24/48 h',
@@ -20,7 +23,7 @@ const CAROUSEL: CarouselProps[] = [
   },
   {
     id: 2,
-    Title: 'Consigue hasta un -25% en compras superiores a 40€',
+    title: 'Consigue hasta un -25% en compras superiores a 40€',
     description: '-20 % al gastar 100 € o -25 % al gastar 150 €. Usa el código CYBER25.',
     link: '#'
   },
@@ -43,16 +46,19 @@ const CarouselBanner = () => {
 
   return (
     <section className="bg-gray-200 dark:bg-primary">
-      <Carousel className="w-full max-w-4xl mx-auto">
+      <Carousel className="w-full max-w-4xl mx-auto" plugins={[Autoplay({ delay: 3000 })]}>
         <CarouselContent>
-          {CAROUSEL.map((carousel) => (
-            <CarouselItem key={carousel.id} onClick={() => router.push(carousel.link)} className='cursor-pointer'>
-              {carousel.title}
+          {CAROUSEL_BANNER.map(({ id, title, description, link }) => (
+            <CarouselItem key={id} onClick={() => router.push(link)} className="cursor-pointer">
+              <Card className="shadcn-none border-none bg-transparent">
+                <CardContent className="flex flex-col justify-center items-center text-center p-2">
+                  <p className="sm:text-lg text-wrap dark:text-red-50 text-gray-400">{title}</p>
+                  <p className="text-xs sm:text-sm text-wrap dark:text-red-50 text-gray-400">{description}</p>
+                </CardContent>
+              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
       </Carousel>
     </section>
   )

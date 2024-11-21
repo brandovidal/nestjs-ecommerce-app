@@ -1,4 +1,4 @@
-import { CarouselBanner } from '@/components/carousel/carousel-banner'
+import { CarouselBanner } from '@/components/carousel-banner/carousel-banner'
 
 export default function Home() {
   return (
