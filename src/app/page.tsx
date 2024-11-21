@@ -1,10 +1,9 @@
-import { Button } from "@/ui/button";
+import { CarouselBanner } from '@/components/carousel/carousel-banner'
 
 export default function Home() {
   return (
     <main>
-      <h1>hello nextjs</h1>
-      <Button>Button</Button>
+      <CarouselBanner />
     </main>
-  );
+  )
 }

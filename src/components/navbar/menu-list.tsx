@@ -14,6 +14,31 @@ import {
   navigationMenuTriggerStyle
 } from '@/ui/navigation-menu'
 
+interface CarouselProps {
+  title: string
+  description: string
+  link: string
+}
+
+const CATEGORIES: CarouselProps[] = [
+  {
+    title: 'Cafe grano',
+    href: '/category/grano',
+    description: 'Explora nuestra colección de café en grano hoy mismo y lleva tu amor por el café a nuevas alturas. ¡Cada taza es una celebración del sabor!'
+  },
+  {
+    title: 'Cafe molido',
+    href: '/category/molido',
+    description: 'Descubre el placer del café molido y transforma tu rutina diaria en un momento especial. ¡Cada taza es una invitación a disfrutar!'
+  },
+  {
+    title: 'Cafe en capsula',
+    href: '/category/capsula',
+    description:
+      'Descubre la conveniencia del café en cápsulas y transforma tu rutina diaria en un momento de placer. ¡Cada cápsula es una pequeña joya de sabor lista para disfrutar!'
+  }
+]
+
 const MenuList = () => {
   return (
     <NavigationMenu>
@@ -89,22 +114,3 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(({ c
   )
 })
 ListItem.displayName = 'ListItem'
-
-const CATEGORIES: { title: string; href: string; description: string }[] = [
-  {
-    title: 'Cafe grano',
-    href: '/category/grano',
-    description: 'Explora nuestra colección de café en grano hoy mismo y lleva tu amor por el café a nuevas alturas. ¡Cada taza es una celebración del sabor!'
-  },
-  {
-    title: 'Cafe molido',
-    href: '/category/molido',
-    description: 'Descubre el placer del café molido y transforma tu rutina diaria en un momento especial. ¡Cada taza es una invitación a disfrutar!'
-  },
-  {
-    title: 'Cafe en capsula',
-    href: '/category/capsula',
-    description:
-      'Descubre la conveniencia del café en cápsulas y transforma tu rutina diaria en un momento de placer. ¡Cada cápsula es una pequeña joya de sabor lista para disfrutar!'
-  }
-]
