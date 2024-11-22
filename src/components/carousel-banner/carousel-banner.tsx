@@ -50,7 +50,7 @@ const CarouselBanner = () => {
         <CarouselContent>
           {CAROUSEL_BANNER.map(({ id, title, description, link }) => (
             <CarouselItem key={id} onClick={() => router.push(link)} className="cursor-pointer">
-              <Card className="shadcn-none border-none bg-transparent">
+              <Card className="shadow-none border-none bg-transparent">
                 <CardContent className="flex flex-col justify-center items-center text-center p-2">
                   <p className="sm:text-lg text-wrap dark:text-red-50 text-gray-400">{title}</p>
                   <p className="text-xs sm:text-sm text-wrap dark:text-red-50 text-gray-400">{description}</p>

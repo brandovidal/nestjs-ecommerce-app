@@ -1,6 +1,6 @@
 'use server'
 
-import { ResponseData } from '@/types/response'
+import { Response } from '@/types/response'
 
 const { STRAPI_URL, STRAPI_TOKEN } = process.env
 
@@ -11,6 +11,6 @@ export async function query<T>(url: string) {
     }
   })
 
-  const responseData = (await response.json()) as ResponseData<T>
+  const responseData = (await response.json()) as Response<T>
   return responseData
 }

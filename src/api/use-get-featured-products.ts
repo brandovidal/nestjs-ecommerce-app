@@ -3,29 +3,9 @@
 import { useEffect, useState } from 'react'
 
 import { query } from '@/lib/strapi'
+import { Product } from '@/types/product'
 
-interface ProductImage {
-  name: string
-  url: string
-}
-
-interface Product {
-  id: number
-  documentId: string
-  name: string
-  slug: string
-  description: string
-  active: boolean
-  price: number
-  origin: string
-  taste: string
-  isFeatured: null
-  createdAt: string
-  updatedAt: string
-  publishedAt: string
-  locale: string
-  images: ProductImage[]
-}
+const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
 export function useGetFeaturedProducts() {
   const [data, setData] = useState<Product[] | null>(null)
@@ -34,12 +14,22 @@ export function useGetFeaturedProducts() {
 
   useEffect(() => {
     const fetchQuery = async () => {
-      const { data, error } = await query<Product[]>('products?populate[images][fields][0]=name&populate[images][fields][1]=urls')
+      const { data: products, error } = await query<Product[]>('products?populate[images][fields][0]=name&populate[images][fields][1]=url&populate[category][fields][0]=name')
+
       if (error) {
         setLoading(false)
         setError(error.message ?? 'Unknown error')
         return
       }
+
+      if (products?.length === 0 && products instanceof Array<Product>) return setData(products)
+
+      const data = products.map((product) => {
+        const { images: rawImages } = product
+        const images = rawImages.map((image) => ({ ...image, url: `${STRAPI_URL}${image.url}` }))
+
+        return { ...product, images }
+      })
 
       setData(data)
       setLoading(false)
