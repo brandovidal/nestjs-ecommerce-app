@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
                 </section>
               </CarouselItem>
             ))}
-          {error && <p>Vuelva a cargar la pagina</p>}
+          {error && <p>Ocurrio un error al cargar los productos.</p>}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
