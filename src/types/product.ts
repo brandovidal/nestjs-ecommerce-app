@@ -1,4 +1,4 @@
-interface ProductImage {
+export interface ProductImage {
   id: number
   documentId: string
   name: string
@@ -6,7 +6,7 @@ interface ProductImage {
   createdAt: string
   updatedAt: string
 }
-interface ProductCategory {
+export interface ProductCategory {
   id: number
   documentId: string
   name: string

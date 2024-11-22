@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import { query } from '@/lib/strapi'
-import { Product } from '@/types/product'
+import { Product, ProductImage } from '@/types/product'
 
 const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
@@ -14,7 +14,9 @@ export function useGetFeaturedProducts() {
 
   useEffect(() => {
     const fetchQuery = async () => {
-      const { data: products, error } = await query<Product[]>('products?populate[images][fields][0]=name&populate[images][fields][1]=url&populate[category][fields][0]=name')
+      const { data: products = [], error } = await query<Product[]>(
+        'products?filters[isFeatured][$eq]=true&populate[images][fields][0]=name&populate[images][fields][1]=url&populate[category][fields][0]=name'
+      )
 
       if (error) {
         setLoading(false)
@@ -22,11 +24,12 @@ export function useGetFeaturedProducts() {
         return
       }
 
-      if (products?.length === 0 && products instanceof Array<Product>) return setData(products)
+      const isNotArray = !Array.isArray(products)
+      if (isNotArray || products.length === 0) return setData([])
 
       const data = products.map((product) => {
         const { images: rawImages } = product
-        const images = rawImages.map((image) => ({ ...image, url: `${STRAPI_URL}${image.url}` }))
+        const images: ProductImage[] = rawImages.map((image) => ({ ...image, url: `${STRAPI_URL}${image.url}` }))
 
         return { ...product, images }
       })

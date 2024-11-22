@@ -8,18 +8,18 @@ import { Carousel, CarouselContent, CarouselItem } from '@/ui/carousel'
 
 import Autoplay from 'embla-carousel-autoplay'
 
-interface CarouselProps {
+interface CarouselBannerProps {
   title: string
   description: string
   link: string
 }
 
-const CAROUSEL_BANNER: CarouselProps[] = [
+const CAROUSEL_BANNER: CarouselBannerProps[] = [
   {
     id: 1,
     title: 'Envio en 24/48 h',
     description: 'Como cliente VIP, tus envios en 24/48 horas. Obten mas información en nuestras redes.',
-    link: '#!'
+    link: '#'
   },
   {
     id: 2,
@@ -52,8 +52,8 @@ const CarouselBanner = () => {
             <CarouselItem key={id} onClick={() => router.push(link)} className="cursor-pointer">
               <Card className="shadow-none border-none bg-transparent">
                 <CardContent className="flex flex-col justify-center items-center text-center p-2">
-                  <p className="sm:text-lg text-wrap dark:text-red-50 text-gray-400">{title}</p>
-                  <p className="text-xs sm:text-sm text-wrap dark:text-red-50 text-gray-400">{description}</p>
+                  <p className="sm:text-lg text-wrap text-gray-900 dark:text-red-50 font-semibold">{title}</p>
+                  <p className="text-xs sm:text-sm text-wrap text-gray-900 dark:text-red-50 font-medium">{description}</p>
                 </CardContent>
               </Card>
             </CarouselItem>
