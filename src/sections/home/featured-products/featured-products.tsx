@@ -11,7 +11,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Card, CardContent } from '@/ui/card'
 
 import { FeaturedProductsSkeleton } from './featured-products-skeleton'
-import { IconButton } from '../icon-button/icon-button'
+import { IconButton } from '../../../components/icon-button/icon-button'
 
 const FeaturedProducts = () => {
   const router = useRouter()
