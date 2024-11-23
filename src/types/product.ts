@@ -1,19 +1,5 @@
-export interface ProductImage {
-  id: number
-  documentId: string
-  name: string
-  url: string
-  createdAt: string
-  updatedAt: string
-}
-export interface ProductCategory {
-  id: number
-  documentId: string
-  name: string
-  slug: string
-  createdAt: string
-  updatedAt: string
-}
+import { Category } from './category'
+import { Image } from './image'
 
 export interface Product {
   id: number
@@ -30,6 +16,6 @@ export interface Product {
   updatedAt: string
   publishedAt: string
   locale: string
-  images: ProductImage[]
-  category: ProductCategory
+  images: Image[]
+  category: Category
 }

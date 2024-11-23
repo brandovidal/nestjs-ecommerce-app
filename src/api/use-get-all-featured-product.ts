@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react'
 
 import { query } from '@/lib/strapi'
-import { Product, ProductImage } from '@/types/product'
+
+import { Product } from '@/types/product'
+import { Image } from '@/types/image'
 
 const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
-export function useGetFeaturedProducts() {
+export function useGetAllFeaturedProduct() {
   const [data, setData] = useState<Product[] | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -27,11 +29,11 @@ export function useGetFeaturedProducts() {
       const isNotArray = !Array.isArray(products)
       if (isNotArray || products.length === 0) return setData([])
 
-      const data = products.map((product) => {
-        const { images: rawImages } = product
-        const images: ProductImage[] = rawImages.map((image) => ({ ...image, url: `${STRAPI_URL}${image.url}` }))
+      const data = products.map((item) => {
+        const { images: rawImages } = item
+        const images: Image[] = rawImages.map((image) => ({ ...image, url: `${STRAPI_URL}${image.url}` }))
 
-        return { ...product, images }
+        return { ...item, images }
       })
 
       setData(data)

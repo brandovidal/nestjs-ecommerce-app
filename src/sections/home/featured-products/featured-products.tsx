@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 
 import { Expand, ShoppingCart } from 'lucide-react'
 
-import { useGetFeaturedProducts } from '@/api/use-get-featured-products'
+import { useGetAllFeaturedProduct } from '@/api/use-get-all-featured-product'
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/ui/carousel'
 import { Card, CardContent } from '@/ui/card'
@@ -16,7 +16,7 @@ import { IconButton } from '../../../components/icon-button/icon-button'
 const FeaturedProducts = () => {
   const router = useRouter()
 
-  const { data, error, loading } = useGetFeaturedProducts()
+  const { data, error, loading } = useGetAllFeaturedProduct()
 
   return (
     <section className="max-w-5xl py-4 mx-auto sm:py-16 sm:px-24">

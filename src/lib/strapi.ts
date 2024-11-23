@@ -2,12 +2,12 @@
 
 import { Response } from '@/types/response'
 
-const { STRAPI_URL, STRAPI_TOKEN } = process.env
+const { NEXT_PUBLIC_STRAPI_URL, NEXT_PUBLIC_STRAPI_TOKEN } = process.env
 
 export async function query<T>(url: string) {
-  const response = await fetch(`${STRAPI_URL}/api/${url}`, {
+  const response = await fetch(`${NEXT_PUBLIC_STRAPI_URL}/api/${url}`, {
     headers: {
-      Authorization: `Bearer ${STRAPI_TOKEN}`
+      Authorization: `Bearer ${NEXT_PUBLIC_STRAPI_TOKEN}`
     }
   })
 
