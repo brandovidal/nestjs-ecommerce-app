@@ -41,7 +41,7 @@ const FeaturedProducts = () => {
                     <section className="flex justify-between gap-4 px-8">
                       <h3 className="text-lg font-bold">{name}</h3>
                       <div className="flex items-center justify-between gap-3">
-                        <p className="px-2 py-1 text-white bg-black dark:text-black dark:bg-white rounded-full w-fit text-sm">{taste}</p>
+                        <p className="px-2 py-1 text-white dark:text-black bg-black dark:bg-white rounded-full w-fit text-sm">{taste}</p>
                         <p className="px-2 py-1 text-white bg-primary rounded-full w-fit text-sm">{origin}</p>
                       </div>
                     </section>
