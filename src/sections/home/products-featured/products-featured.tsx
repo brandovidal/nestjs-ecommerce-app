@@ -5,26 +5,26 @@ import { useRouter } from 'next/navigation'
 
 import { Expand, ShoppingCart } from 'lucide-react'
 
-import { useGetAllFeaturedProduct } from '@/api/use-get-all-featured-product'
+import { useGetAllProductFeatured } from '@/api/use-get-all-product-featured'
 
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/ui/carousel'
 import { Card, CardContent } from '@/ui/card'
 
 import { IconButton } from '@/components/icon-button/icon-button'
 
-import { FeaturedProductsSkeleton } from './featured-products-skeleton'
+import { ProductsFeaturedSkeleton } from './products-featured-skeleton'
 
-const FeaturedProducts = () => {
+const ProductsFeatured = () => {
   const router = useRouter()
 
-  const { data, error, loading } = useGetAllFeaturedProduct()
+  const { data, error, loading } = useGetAllProductFeatured()
 
   return (
     <section className="max-w-5xl py-4 mx-auto sm:py-16 sm:px-24">
       <h3 className="px-6 text-3xl sm:pb-8">Productos destacados</h3>
       <Carousel>
         <CarouselContent className="-ml-2 md:-ml-4 flex gap-4">
-          {loading && <FeaturedProductsSkeleton grid={3} />}
+          {loading && <ProductsFeaturedSkeleton grid={3} />}
           {data !== null &&
             data.map(({ id, name, slug, origin, taste, images }) => (
               <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3 group">
@@ -59,4 +59,4 @@ const FeaturedProducts = () => {
   )
 }
 
-export { FeaturedProducts }
+export { ProductsFeatured }

@@ -5,7 +5,7 @@ interface SkeletonProps {
   grid: number
 }
 
-const FeaturedProductsSkeleton = ({ grid }: SkeletonProps) => {
+const ProductsFeaturedSkeleton = ({ grid }: SkeletonProps) => {
   return Array.from({ length: grid }).map((_, index) => {
     return (
       <section key={index} className="flex flex-col gap-4 mx-auto mt-8 ml-8">
@@ -19,4 +19,4 @@ const FeaturedProductsSkeleton = ({ grid }: SkeletonProps) => {
   })
 }
 
-export { FeaturedProductsSkeleton }
+export { ProductsFeaturedSkeleton }
