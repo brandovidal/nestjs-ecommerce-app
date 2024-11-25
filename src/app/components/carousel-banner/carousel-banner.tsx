@@ -1,7 +1,6 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import React from 'react'
 
 import { Card, CardContent } from '@/ui/card'
 import { Carousel, CarouselContent, CarouselItem } from '@/ui/carousel'

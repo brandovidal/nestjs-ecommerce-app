@@ -15,6 +15,7 @@ export default function Page() {
   const { slug } = useParams<{ slug: string }>()
 
   const { data, loading } = useGetAllProductByCategory(slug)
+  console.log("🚀 ~ Page ~ data:", data)
 
   const [filteredOrigin, setFilteredOrigin] = useState('')
 
@@ -29,7 +30,7 @@ export default function Page() {
   return (
     <section className="max-w-6xl p-4 mx-auto sm:py-16 sm:px-24">
       {loading && <p>Cargando...</p>}
-      {data && <h1 className="text-3xl font-medium">Cafe {data[0].category.name}</h1>}
+      {data.length > 0 && <h1 className="text-3xl font-medium">Cafe {data[0]?.category.name}</h1>}
       <Separator />
 
       <div className="sm:flex sm:justify-between">

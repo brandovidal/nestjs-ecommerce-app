@@ -9,7 +9,7 @@ import { Image } from '@/types/image'
 
 const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
-export function useGetAllProductBySlug(name: string) {
+export function useGetAllProductBySlug(slug: string) {
   const [data, setData] = useState<Product | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -17,7 +17,7 @@ export function useGetAllProductBySlug(name: string) {
   useEffect(() => {
     const fetchQuery = async () => {
       const { data: products = [], error } = await query<Product[]>(
-        `products?populate[category][fields][0]=slug&populate[category][fields][1]=name&filters[slug][$eq]=${name}&populate[images][fields][0]=name&populate[images][fields][1]=url`
+        `products?populate[category][fields][0]=slug&populate[category][fields][1]=name&filters[slug][$eq]=${slug}&populate[images][fields][0]=name&populate[images][fields][1]=url`
       )
 
       if (error) {
@@ -40,7 +40,7 @@ export function useGetAllProductBySlug(name: string) {
       setLoading(false)
     }
     fetchQuery()
-  }, [name])
+  }, [slug])
 
   return { data, loading, error }
 }

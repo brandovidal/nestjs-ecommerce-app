@@ -1,5 +1,4 @@
 import { Skeleton } from '@/ui/skeleton'
-import React from 'react'
 
 interface SkeletonProps {
   grid: number
