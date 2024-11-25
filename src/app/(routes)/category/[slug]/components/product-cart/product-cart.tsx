@@ -33,7 +33,7 @@ const ProductCart = ({ data }: ProductCartProps) => {
             <div className="absolute w-full px-4 transition duration-300 opacity-0 group-hover:opacity-100 bottom-5">
               <div className="flex justify-center gap-x-6">
                 <IconButton icon={<Expand size={20} className="text-gray-600" />} onClick={() => router.push(`/product/${data.slug}`)} />
-                <IconButton icon={<ShoppingCart size={20} className="text-gray-600" />} onClick={() => console.log('product')} />
+                <IconButton icon={<ShoppingCart size={20} className="text-gray-600" />} onClick={() => router.push(`/cart`)} />
               </div>
             </div>
           </CarouselItem>

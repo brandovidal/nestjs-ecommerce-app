@@ -1,8 +1,8 @@
-import { CarouselBanner } from '@/sections/home/carousel-banner/carousel-banner'
-import { ProductsFeatured } from '@/sections/home/products-featured/products-featured'
-import { DiscountBanner } from '@/sections/home/discount-banner/discount-banner'
-import { ChooseCategory } from '@/sections/home/choose-category/choose-category'
-import { ProductBanner } from '@/sections/home/product-banner/product-banner'
+import { CarouselBanner } from './components/carousel-banner/carousel-banner'
+import { ProductsFeatured } from './components/products-featured/products-featured'
+import { DiscountBanner } from './components/discount-banner/discount-banner'
+import { ChooseCategory } from './components/choose-category/choose-category'
+import { ProductBanner } from './components/product-banner/product-banner'
 
 export default function Home() {
   return (

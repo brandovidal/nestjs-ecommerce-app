@@ -7,9 +7,9 @@ import { Separator } from '@/ui/separator'
 
 import { useGetAllProductCategory } from '@/api/use-get-all-product-category'
 
-import { FiltersControlsCategory } from '@/sections/category/filters/filters-controls-category'
-import { ProductsFeaturedSkeleton } from '@/sections/home/products-featured/products-featured-skeleton'
-import { ProductCart } from '@/sections/category/filters/product-cart'
+import { FiltersControlsCategory } from './components/filters/filters-controls-category'
+import { ProductCart } from './components/product-cart/product-cart'
+import { ProductsCartSkeleton } from './components/product-cart/product-cart-skeleton'
 
 function CategoryPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -36,7 +36,7 @@ function CategoryPage() {
         <FiltersControlsCategory handleOrigin={setFilteredOrigin} />
 
         <div className="grid gap-5 mt-8 sm:grid-cols-2 md:grid-cols-3 md:gap-10 w-full place-content-center">
-          {loading && <ProductsFeaturedSkeleton grid={3} />}
+          {loading && <ProductsCartSkeleton grid={3} />}
           {filteredData !== null && filteredData.map((product) => <ProductCart key={product.id} data={product} />)}
           {filteredData !== null && filteredData.length === 0 && (
             <p className="sm:col-span-2 md:col-span-3 text-center">No hay productos disponibles.</p>
