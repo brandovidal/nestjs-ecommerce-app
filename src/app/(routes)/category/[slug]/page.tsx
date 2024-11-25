@@ -5,16 +5,16 @@ import { useParams } from 'next/navigation'
 
 import { Separator } from '@/ui/separator'
 
-import { useGetAllProductCategory } from '@/api/use-get-all-product-category'
+import { useGetAllProductByCategory } from '@/api/use-get-all-product-by-category'
 
 import { FiltersControlsCategory } from './components/filters/filters-controls-category'
 import { ProductCart } from './components/product-cart/product-cart'
 import { ProductsCartSkeleton } from './components/product-cart/product-cart-skeleton'
 
-function CategoryPage() {
+export default function Page() {
   const { slug } = useParams<{ slug: string }>()
 
-  const { data, loading } = useGetAllProductCategory(slug)
+  const { data, loading } = useGetAllProductByCategory(slug)
 
   const [filteredOrigin, setFilteredOrigin] = useState('')
 
@@ -46,5 +46,3 @@ function CategoryPage() {
     </section>
   )
 }
-
-export default CategoryPage

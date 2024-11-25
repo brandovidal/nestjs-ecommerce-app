@@ -9,14 +9,14 @@ import { Image } from '@/types/image'
 
 const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
-export function useGetAllProductCategory(name: string) {
-  const [data, setData] = useState<Product[] | []>(null)
+export function useGetAllProductByCategory(category: string) {
+  const [data, setData] = useState<Product[] | []>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchQuery = async () => {
-      const { data: products = [], error } = await query<Product[]>(`products?populate[category][fields][0]=slug&populate[category][fields][1]=name&filters[category][slug][$eq]=${name}&populate[images][fields][0]=name&populate[images][fields][1]=url`)
+      const { data: products = [], error } = await query<Product>(`products?populate[category][fields][0]=slug&populate[category][fields][1]=name&filters[category][slug][$eq]=${category}&populate[images][fields][0]=name&populate[images][fields][1]=url`)
 
       if (error) {
         setLoading(false)
@@ -25,7 +25,7 @@ export function useGetAllProductCategory(name: string) {
       }
 
       const isNotArray = !Array.isArray(products)
-      if (isNotArray || products.length === 0) return setData([])
+      if (isNotArray || products.length === 0) return setData(null)
 
       const data = products.map((item) => {
         const { images: rawImages } = item
@@ -38,7 +38,7 @@ export function useGetAllProductCategory(name: string) {
       setLoading(false)
     }
     fetchQuery()
-  }, [name])
+  }, [category])
 
   return { data, loading, error }
 }

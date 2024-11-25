@@ -20,7 +20,7 @@ const ProductCart = ({ data }: ProductCartProps) => {
   const router = useRouter()
 
   return (
-    <Link href={`product/${data.slug}`} className="relative p-2 transition-all duration-300 hover:shadow-md">
+    <Link href={`/product/${data.slug}`} className="relative p-2 transition-all duration-300 hover:shadow-md">
       <div className="absolute flex items-center justify-center gap-3 px-2 z-[1] top-4">
         <p className="px-2 py-1 text-xs text-white dark:text-black bg-black dark:bg-white  rounded-full w-fit">{data.taste}</p>
         <p className="px-2 py-1 text-xs text-white bg-red-500 rounded-full w-fit">{data.origin}</p>
