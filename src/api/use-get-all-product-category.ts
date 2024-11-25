@@ -10,7 +10,7 @@ import { Image } from '@/types/image'
 const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
 export function useGetAllProductCategory(name: string) {
-  const [data, setData] = useState<Product[] | null>(null)
+  const [data, setData] = useState<Product[] | []>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
