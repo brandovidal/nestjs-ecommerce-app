@@ -31,7 +31,7 @@ const ProductsFeatured = () => {
                 <section className="p-1">
                   <Card className="py-4 border border-gray-200 shadow-none">
                     <CardContent className="relative flex items-center justify-center px-6 py-2">
-                      <Image src={images[0].url} alt={name} width={250} height={250} className="object-cover aspect-square" onClick={(e) => e.stopPropagation()} />
+                      <Image src={images[0].url} alt={name} width={250} height={250} className="object-cover aspect-square group-hover:rotate-6 transition duration-300 ease-in-out" onClick={(e) => e.stopPropagation()} />
                       <div className="absolute w-full px-6 transition duration-300 opacity-0 group-hover:opacity-100">
                         <div className="flex items-center justify-center gap-2">
                           <IconButton icon={<Expand />} onClick={() => router.push(`product/${slug}`)} size={20} clasName="text-gray-600 dark:text-gray-400" />

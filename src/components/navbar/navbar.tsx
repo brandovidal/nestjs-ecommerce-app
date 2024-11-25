@@ -17,8 +17,8 @@ const NavBar = () => {
   const handleGoToCart = () => {
     router.push("/cart");
   };
-  const handleGoToLovedProducts = () => {
-    router.push("/loved-products");
+  const handleGoToFavorite = () => {
+    router.push("/favorite");
   };
 
   return (
@@ -41,7 +41,7 @@ const NavBar = () => {
         <Heart
           className="cursor-pointer"
           strokeWidth={1}
-          onClick={handleGoToLovedProducts}
+          onClick={handleGoToFavorite}
         />
         <User className="cursor-pointer" strokeWidth={1} />
         <ToggleTheme />
