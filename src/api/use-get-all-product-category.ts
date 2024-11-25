@@ -9,16 +9,14 @@ import { Image } from '@/types/image'
 
 const STRAPI_URL = process.env['NEXT_PUBLIC_STRAPI_URL']
 
-export function useGetAllFeaturedProduct() {
+export function useGetAllProductCategory(name: string) {
   const [data, setData] = useState<Product[] | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchQuery = async () => {
-      const { data: products = [], error } = await query<Product[]>(
-        'products?filters[isFeatured][$eq]=true&populate[images][fields][0]=name&populate[images][fields][1]=url&populate[category][fields][0]=name'
-      )
+      const { data: products = [], error } = await query<Product[]>(`products?populate[category][fields][0]=slug&populate[category][fields][1]=name&filters[category][slug][$eq]=${name}&populate[images][fields][0]=name&populate[images][fields][1]=url`)
 
       if (error) {
         setLoading(false)
@@ -40,7 +38,7 @@ export function useGetAllFeaturedProduct() {
       setLoading(false)
     }
     fetchQuery()
-  }, [])
+  }, [name])
 
   return { data, loading, error }
 }

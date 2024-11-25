@@ -31,7 +31,6 @@ export function useGetAllCategory() {
 
         return { ...item, image }
       })
-      console.log("🚀 ~ data ~ data:", data)
 
       setData(data)
       setLoading(false)
