@@ -12,7 +12,6 @@ export default function Page() {
   const { slug } = useParams<{ slug: string }>()
 
   const { data, loading } = useGetAllProductBySlug(slug)
-  console.log(data)
 
   if (loading) {
     return <ProductSkeleton />
