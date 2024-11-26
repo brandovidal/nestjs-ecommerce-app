@@ -1,3 +1,6 @@
+'use client'
+
+import { useCallback } from 'react'
 import { Heart } from 'lucide-react'
 
 import { formatPrice } from '@/lib/format-price'
@@ -18,9 +21,12 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const { name, taste, origin, description, price } = product
 
-  const handleAddToCart = (product: Product) => () => {
-    addItems(product)
-  }
+  const handleAddToCart = useCallback(
+    (product: Product) => () => {
+      addItems(product)
+    },
+    [addItems]
+  )
 
   const handleAddToFavorite = () => {
     console.log('Agregar a favoritos')

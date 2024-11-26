@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback } from 'react'
 import { BaggageClaim, Heart, ShoppingCart, User } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
@@ -19,13 +20,13 @@ const NavBar = () => {
   const cartItemsLength = cartItems.length
   const hasCartItems = cartItemsLength > CART_EMPTY
 
-  const handleGoToHome = () => {
+  const handleGoToHome = useCallback(() => {
     router.push('/')
-  }
+  }, [router])
 
-  const handleGoToCart = () => {
+  const handleGoToCart = useCallback(() => {
     router.push('/cart')
-  }
+  }, [router])
 
   const handleGoToFavorite = () => {
     router.push('/favorite')

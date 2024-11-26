@@ -1,3 +1,7 @@
+'use client'
+
+import { useCallback } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -21,13 +25,16 @@ const ProductCart = ({ product }: ProductCartProps) => {
 
   const router = useRouter()
 
-  const handleGoToDetail = (slug: string) => () => {
-    router.push(`product/${slug}`)
-  }
+  const handleGoToDetail = useCallback(
+    (slug: string) => () => {
+      router.push(`product/${slug}`)
+    },
+    [router]
+  )
 
-  const handleGoToCart = () => {
+  const handleGoToCart = useCallback(() => {
     router.push('/cart')
-  }
+  }, [router])
 
   return (
     <Link href={`/product/${slug}`} className="relative p-2 transition-all duration-300 hover:shadow-md">

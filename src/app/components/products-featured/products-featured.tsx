@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -24,11 +25,19 @@ const ProductsFeatured = () => {
 
   const { data, error, loading } = useGetAllProductFeatured()
 
-  const handleGoToDetail = (slug: string) => () => {
-    router.push(`product/${slug}`)
-  }
+  const handleGoToDetail = useCallback(
+    (slug: string) => () => {
+      router.push(`product/${slug}`)
+    },
+    [router]
+  )
 
-  const handleAddToCart = (product: Product) => () => [addItems(product)]
+  const handleAddToCart = useCallback(
+    (product: Product) => () => {
+      addItems(product)
+    },
+    [addItems]
+  )
 
   return (
     <>

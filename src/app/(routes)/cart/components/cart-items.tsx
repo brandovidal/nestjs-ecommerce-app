@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -11,7 +12,6 @@ import { Product } from '@/types/product'
 
 import { formatPrice } from '@/lib/format-price'
 import { useCart } from '@/stores/use-cart'
-import { useCallback } from 'react'
 
 interface CartItemsProps {
   product: Product
