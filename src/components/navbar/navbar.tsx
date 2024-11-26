@@ -1,25 +1,32 @@
-"use client";
+'use client'
 
-import { Heart, ShoppingCart, User } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { BaggageClaim, Heart, ShoppingCart, User } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
-import { MenuList } from "@/components/navbar/menu-list";
-import { ItemsMenuMobile } from "@/components/navbar/items-menu-mobile";
-import { ToggleTheme } from "@/components/theme/toogle-theme";
+import { MenuList } from '@/components/navbar/menu-list'
+import { ItemsMenuMobile } from '@/components/navbar/items-menu-mobile'
+import { ToggleTheme } from '@/components/theme/toogle-theme'
+
+import { useCart } from '@/stores/use-cart'
+
+const CART_EMPTY = 0
 
 const NavBar = () => {
-  const router = useRouter();
+  const router = useRouter()
+
+  const cartItems = useCart((state) => state.items)
+  const cartItemsLength = cartItems.length
 
   const handleGoToHome = () => {
-    router.push("/");
-  };
+    router.push('/')
+  }
 
   const handleGoToCart = () => {
-    router.push("/cart");
-  };
+    router.push('/cart')
+  }
   const handleGoToFavorite = () => {
-    router.push("/favorite");
-  };
+    router.push('/favorite')
+  }
 
   return (
     <aside className="flex items-center justify-between p-4 mx-auto cursor-pointer sm:max-w-4xl md:max-w-6xl">
@@ -33,21 +40,19 @@ const NavBar = () => {
         <ItemsMenuMobile />
       </nav>
       <section className="flex items-center justify-between gap-2 sm:gap-7">
-        <ShoppingCart
-          className="cursor-pointer"
-          strokeWidth={1}
-          onClick={handleGoToCart}
-        />
-        <Heart
-          className="cursor-pointer"
-          strokeWidth={1}
-          onClick={handleGoToFavorite}
-        />
+        {cartItemsLength === CART_EMPTY && <ShoppingCart className="cursor-pointer" strokeWidth={1} onClick={handleGoToCart} />}
+        {cartItemsLength > CART_EMPTY && (
+          <div className="flex gap-1" onClick={handleGoToCart}>
+            <BaggageClaim className="cursor-pointer" strokeWidth={1} />
+            <span>{cartItemsLength}</span>
+          </div>
+        )}
+        <Heart className="cursor-pointer" strokeWidth={1} onClick={handleGoToFavorite} />
         <User className="cursor-pointer" strokeWidth={1} />
         <ToggleTheme />
       </section>
     </aside>
-  );
-};
+  )
+}
 
-export { NavBar };
+export { NavBar }

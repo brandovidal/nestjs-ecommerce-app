@@ -15,7 +15,6 @@ export default function Page() {
   const { slug } = useParams<{ slug: string }>()
 
   const { data, loading } = useGetAllProductByCategory(slug)
-  console.log("🚀 ~ Page ~ data:", data)
 
   const [filteredOrigin, setFilteredOrigin] = useState('')
 
