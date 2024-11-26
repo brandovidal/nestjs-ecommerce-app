@@ -52,7 +52,6 @@ const ProductsFeatured = () => {
                             width={250}
                             height={250}
                             className="object-cover aspect-square group-hover:rotate-6 transition duration-300 ease-in-out"
-                            onClick={(e) => e.stopPropagation()}
                           />
                           <div className="absolute w-full px-6 transition duration-300 opacity-0 group-hover:opacity-100">
                             <div className="flex items-center justify-center gap-2">
