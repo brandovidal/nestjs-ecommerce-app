@@ -37,7 +37,7 @@ export default function Page() {
 
         <div className="grid gap-5 mt-8 sm:grid-cols-2 md:grid-cols-3 md:gap-10 w-full place-content-center">
           {loading && <ProductsCartSkeleton grid={3} />}
-          {filteredData !== null && filteredData.map((product) => <ProductCart key={product.id} data={product} />)}
+          {filteredData !== null && filteredData.map((product) => <ProductCart key={product.id} product={product} />)}
           {filteredData !== null && filteredData.length === 0 && (
             <p className="sm:col-span-2 md:col-span-3 text-center">No hay productos disponibles.</p>
           )}

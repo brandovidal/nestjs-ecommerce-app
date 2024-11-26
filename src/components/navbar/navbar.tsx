@@ -7,15 +7,17 @@ import { MenuList } from '@/components/navbar/menu-list'
 import { ItemsMenuMobile } from '@/components/navbar/items-menu-mobile'
 import { ToggleTheme } from '@/components/theme/toogle-theme'
 
-import { useCart } from '@/stores/use-cart'
+import { CART_EMPTY } from '@/constants/cart'
 
-const CART_EMPTY = 0
+import { useCart } from '@/stores/use-cart'
 
 const NavBar = () => {
   const router = useRouter()
 
   const cartItems = useCart((state) => state.items)
+
   const cartItemsLength = cartItems.length
+  const hasCartItems = cartItemsLength > CART_EMPTY
 
   const handleGoToHome = () => {
     router.push('/')
@@ -24,6 +26,7 @@ const NavBar = () => {
   const handleGoToCart = () => {
     router.push('/cart')
   }
+
   const handleGoToFavorite = () => {
     router.push('/favorite')
   }
@@ -40,8 +43,8 @@ const NavBar = () => {
         <ItemsMenuMobile />
       </nav>
       <section className="flex items-center justify-between gap-2 sm:gap-7">
-        {cartItemsLength === CART_EMPTY && <ShoppingCart className="cursor-pointer" strokeWidth={1} onClick={handleGoToCart} />}
-        {cartItemsLength > CART_EMPTY && (
+        {!hasCartItems && <ShoppingCart className="cursor-pointer" strokeWidth={1} onClick={handleGoToCart} />}
+        {hasCartItems && (
           <div className="flex gap-1" onClick={handleGoToCart}>
             <BaggageClaim className="cursor-pointer" strokeWidth={1} />
             <span>{cartItemsLength}</span>

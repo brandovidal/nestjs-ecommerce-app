@@ -18,7 +18,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const { name, taste, origin, description, price } = product
 
-  const handleBuyProduct = (product: Product) => () => {
+  const handleAddToCart = (product: Product) => () => {
     addItems(product)
   }
 
@@ -43,7 +43,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         <Separator className="my-4" />
         <p className="my-4 text-2xl">{formatPrice(price)}</p>
         <div className="flex items-center gap-5">
-          <Button className="w-full" onClick={handleBuyProduct(product)}>
+          <Button className="w-full" onClick={handleAddToCart(product)}>
             Comprar
           </Button>
           <Heart
