@@ -1,7 +1,6 @@
 'use client'
 
 import { useCallback } from 'react'
-import { useRouter } from 'next/navigation'
 
 import { X } from 'lucide-react'
 
@@ -24,16 +23,7 @@ const CartItem = ({ product }: CartItemsProps) => {
   const { id, name, slug, origin, taste, images, price } = product
   const [image] = images
 
-  const router = useRouter()
-
   const removeItemCart = useCart((state) => state.removeItemCart)
-
-  const handleGoToProduct = useCallback(
-    (slug: string) => () => {
-      router.push(`product/${slug}`)
-    },
-    [router]
-  )
 
   const handleRemoveItem = useCallback(
     (id: number) => () => {
@@ -44,7 +34,7 @@ const CartItem = ({ product }: CartItemsProps) => {
 
   return (
     <li className="flex py-6 border-b ">
-      <ProductImage image={image} name={name} handleImageClick={handleGoToProduct(slug)} />
+      <ProductImage image={image} name={name} slug={slug} />
       <div className="flex flex-1 justify-center sm:justify-between px-6">
         <div className="flex flex-col gap-1">
           <h4 className="text-lg-font-bold">{name}</h4>
