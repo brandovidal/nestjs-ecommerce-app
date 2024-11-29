@@ -10,7 +10,7 @@ interface ProductCarouselProps {
 
 const ProductCarousel = ({ images }: ProductCarouselProps) => {
   return (
-    <section className="sm:px-16">
+    <section className="px-4 sm:px-8 lg:px-16">
       <Carousel>
         <CarouselContent>
           {images.map(({ id, name, url }) => (

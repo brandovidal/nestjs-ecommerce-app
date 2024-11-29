@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { X } from 'lucide-react'
 
 import { Button } from '@/ui/button'
-import { ProductCharacteristics } from '@/components/product-characteristics/product-characteristics'
+import { ProductCharacteristics } from '@/components/shared/product-characteristics/product-characteristics'
 
 import { Product } from '@/types/product'
 

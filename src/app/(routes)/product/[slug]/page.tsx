@@ -19,11 +19,11 @@ export default function Page() {
 
   return (
     <section className="max-w-6xl mx-auto py-4 sm:py-32 sm:px-24">
-      <div className="grid sm:grid-cols-2">
+      <div className="grid md:grid-cols-2">
         <div>
           <ProductCarousel images={data.images} />
         </div>
-        <div className="sm:px-12">
+        <div className="px-4 sm:px-8 lg:px-12">
           <ProductInfo product={data} />
         </div>
       </div>

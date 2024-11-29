@@ -9,7 +9,10 @@ import { Separator } from '@/ui/separator'
 import { Button } from '@/ui/button'
 import { Toaster } from '@/ui/toaster'
 
+import { ProductCharacteristics } from '@/components/shared/product-characteristics/product-characteristics'
+
 import { Product } from '@/types/product'
+
 import { useCart } from '@/stores/use-cart'
 import { useFavorite } from '@/stores/use-favorite'
 
@@ -40,14 +43,9 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   return (
     <>
       <section>
-        <div className="justify-between sm:flex mb-3">
+        <div className="flex flex-col lg:flex-row justify-between items-center mb-3">
           <h1 className="text-2xl font-bold">{name}</h1>
-          <div className="flex items-center justify-start gap-3">
-            <p className="px-2 py-1 text-gray-600 dark:text-gray-400 border border-gray-600 dark:border-gray-400 rounded-full w-fit text-sm">
-              {taste}
-            </p>
-            <p className="px-2 py-1 text-red-600 dark:text-red-400 border border-red-600 dark:border-red-400 rounded-full w-fit text-sm">{origin}</p>
-          </div>
+          <ProductCharacteristics taste={taste} origin={origin} />
         </div>
         <Separator className="my-4" />
         <p>{description}</p>

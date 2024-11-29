@@ -27,7 +27,7 @@ const FOOTER = [
 const Footer = () => {
   return (
     <footer className="mt-4">
-      <nav className="w-full max-w-screen-xl mx-auto p-4 md :py-8">
+      <nav className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <section className="sm:flex sm:items-center sm:justify-between">
           <h3>
             <span className="font-bold">Dracon Shop</span> Ecommerce
