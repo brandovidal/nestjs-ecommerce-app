@@ -5,18 +5,18 @@ import { Product } from '@/types/product'
 import { toast } from '@/hooks/use-toast'
 
 interface CartStore {
-  items: Product[]
-  addItem: (data: Product) => void
-  removeItem: (id: number) => void
+  cartItems: Product[]
+  addItemCart: (data: Product) => void
+  removeItemCart: (id: number) => void
   clearCart: () => void
 }
 
 export const useCart = create(
   persist<CartStore>(
     (set, get) => ({
-      items: [],
-      addItem: (data: Product) => {
-        const currentItems = get().items
+      cartItems: [],
+      addItemCart: (data: Product) => {
+        const currentItems = get().cartItems
         const existingItem = currentItems.find((item) => item.id === data.id)
 
         if (existingItem) {
@@ -26,14 +26,14 @@ export const useCart = create(
           })
         }
 
-        set((state) => ({ items: [...state.items, data] }))
+        set((state) => ({ cartItems: [...state.cartItems, data] }))
         toast({ title: 'Producto agregado al carrito 🛒.' })
       },
-      removeItem: (id) => {
-        set((state) => ({ items: state.items.filter((item) => item.id !== id) }))
+      removeItemCart: (id) => {
+        set((state) => ({ cartItems: state.cartItems.filter((item) => item.id !== id) }))
         toast({ title: 'Producto eliminado del carrito 🗑️.', variant: 'destructive' })
       },
-      clearCart: () => set({ items: [] })
+      clearCart: () => set({ cartItems: [] })
     }),
     {
       name: 'cart-storage',

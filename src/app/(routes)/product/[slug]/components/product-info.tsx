@@ -11,26 +11,32 @@ import { Toaster } from '@/ui/toaster'
 
 import { Product } from '@/types/product'
 import { useCart } from '@/stores/use-cart'
+import { useFavorite } from '@/stores/use-favorite'
 
 interface ProductInfoProps {
   product: Product
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
-  const addItems = useCart((state) => state.addItem)
-
   const { name, taste, origin, description, price } = product
+
+  const addItemCart = useCart((state) => state.addItemCart)
+  const addItemFavorite = useFavorite((state) => state.addItemFavorite)
 
   const handleAddToCart = useCallback(
     (product: Product) => () => {
-      addItems(product)
+      addItemCart(product)
     },
-    [addItems]
+    [addItemCart]
   )
 
-  const handleAddToFavorite = () => {
-    console.log('Agregar a favoritos')
-  }
+  const handleAddToFavorite = useCallback(
+    (product: Product) => () => {
+      console.log("🚀 ~ ProductInfo ~ product:", product)
+      addItemFavorite(product)
+    },
+    [addItemFavorite]
+  )
 
   return (
     <>
@@ -56,7 +62,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
             className="transition duration-300 cursor-pointer hover:fill-black hover:dark:fill-white"
             width={30}
             strokeWidth={1}
-            onClick={handleAddToFavorite}
+            onClick={handleAddToFavorite(product)}
           />
         </div>
       </section>

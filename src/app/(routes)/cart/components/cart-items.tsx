@@ -21,7 +21,7 @@ const CartItems = ({ product }: CartItemsProps) => {
   const { id, name, slug, origin, taste, images, price } = product
 
   const router = useRouter()
-  const removeItem = useCart((state) => state.removeItem)
+  const removeItemCart = useCart((state) => state.removeItemCart)
 
   const handleGoToProduct = useCallback(
     (slug: string) => () => {
@@ -32,9 +32,9 @@ const CartItems = ({ product }: CartItemsProps) => {
 
   const handleRemoveItem = useCallback(
     (id: number) => () => {
-      removeItem(id)
+      removeItemCart(id)
     },
-    [removeItem]
+    [removeItemCart]
   )
 
   return (

@@ -12,7 +12,7 @@ import { useCart } from '@/stores/use-cart'
 import { CartItems } from './components/cart-items'
 
 export default function Page() {
-  const cartItems = useCart((state) => state.items)
+  const cartItems = useCart((state) => state.cartItems)
 
   const cartItemsLength = cartItems.length
   const hasCartItems = cartItemsLength > CART_EMPTY

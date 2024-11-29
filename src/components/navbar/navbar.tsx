@@ -15,7 +15,7 @@ import { useCart } from '@/stores/use-cart'
 const NavBar = () => {
   const router = useRouter()
 
-  const cartItems = useCart((state) => state.items)
+  const cartItems = useCart((state) => state.cartItems)
 
   const cartItemsLength = cartItems.length
   const hasCartItems = cartItemsLength > CART_EMPTY

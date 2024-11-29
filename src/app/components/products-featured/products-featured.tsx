@@ -21,7 +21,7 @@ import { useCart } from '@/stores/use-cart'
 const ProductsFeatured = () => {
   const router = useRouter()
 
-  const addItems = useCart((state) => state.addItem)
+  const addItemCart = useCart((state) => state.addItemCart)
 
   const { data, error, loading } = useGetAllProductFeatured()
 
@@ -34,9 +34,9 @@ const ProductsFeatured = () => {
 
   const handleAddToCart = useCallback(
     (product: Product) => () => {
-      addItems(product)
+      addItemCart(product)
     },
-    [addItems]
+    [addItemCart]
   )
 
   return (
