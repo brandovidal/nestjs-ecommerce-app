@@ -1,5 +1,7 @@
 'use client'
 
+import { loadStripe } from '@stripe/stripe-js'
+
 import { CART_EMPTY } from '@/constants/cart'
 
 import { Button } from '@/ui/button'
@@ -11,6 +13,8 @@ import { useCart } from '@/stores/use-cart'
 
 import { CartItem } from './components/cart-item'
 
+const STRIPE_PUBLIC_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
+
 export default function Page() {
   const cartItems = useCart((state) => state.cartItems)
 
@@ -19,8 +23,22 @@ export default function Page() {
 
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
 
-  const handleBuyNow = () => {
+  console.log('🚀 ~ Page ~ STRIPE_PUBLIC_KEY:', STRIPE_PUBLIC_KEY)
+
+  const stripePromise = loadStripe(STRIPE_PUBLIC_KEY)
+
+  const handleBuyNow = async () => {
     console.log('Comprar ahora')
+
+    try {
+      const stripe = await stripePromise
+
+      // TODO: create api
+      const response = await stripe.makePaymentRequest
+
+    } catch (_err) {
+      console.error(_err)
+    }
   }
 
   return (
