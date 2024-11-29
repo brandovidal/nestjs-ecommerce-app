@@ -9,7 +9,7 @@ import { Toaster } from '@/ui/toaster'
 import { formatPrice } from '@/lib/format-price'
 import { useCart } from '@/stores/use-cart'
 
-import { CartItems } from './components/cart-items'
+import { CartItem } from './components/cart-item'
 
 export default function Page() {
   const cartItems = useCart((state) => state.cartItems)
@@ -32,7 +32,7 @@ export default function Page() {
             {!hasCartItems && <p>No hay productos en el carrito</p>}
             <ul>
               {cartItems.map((item) => (
-                <CartItems key={item.id} product={item} />
+                <CartItem key={item.id} product={item} />
               ))}
             </ul>
           </div>

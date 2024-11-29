@@ -10,15 +10,21 @@ import { ToggleTheme } from '@/components/theme/toogle-theme'
 
 import { CART_EMPTY } from '@/constants/cart'
 
+import { cn } from '@/lib/utils'
+
 import { useCart } from '@/stores/use-cart'
+import { useFavorite } from '@/stores/use-favorite'
 
 const NavBar = () => {
   const router = useRouter()
 
   const cartItems = useCart((state) => state.cartItems)
+  const favoriteItems = useFavorite((state) => state.favoriteItems)
 
   const cartItemsLength = cartItems.length
   const hasCartItems = cartItemsLength > CART_EMPTY
+
+  const hasFavoriteItems = favoriteItems.length > CART_EMPTY
 
   const handleGoToHome = useCallback(() => {
     router.push('/')
@@ -51,7 +57,7 @@ const NavBar = () => {
             <span>{cartItemsLength}</span>
           </div>
         )}
-        <Heart className="cursor-pointer" strokeWidth={1} onClick={handleGoToFavorite} />
+        <Heart className={cn('cursor-pointer', hasFavoriteItems && 'fill-black dark:fill-white')} strokeWidth={1} onClick={handleGoToFavorite} />
         <User className="cursor-pointer" strokeWidth={1} />
         <ToggleTheme />
       </section>

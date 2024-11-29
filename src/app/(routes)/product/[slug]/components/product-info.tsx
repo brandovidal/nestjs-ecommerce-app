@@ -32,7 +32,6 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const handleAddToFavorite = useCallback(
     (product: Product) => () => {
-      console.log("🚀 ~ ProductInfo ~ product:", product)
       addItemFavorite(product)
     },
     [addItemFavorite]

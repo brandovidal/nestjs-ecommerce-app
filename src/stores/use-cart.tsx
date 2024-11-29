@@ -21,7 +21,7 @@ export const useCart = create(
 
         if (existingItem) {
           return toast({
-            title: 'El producto ya existe en el carrito ⛔.',
+            title: 'El producto ya existe en el carrito 🚫.',
             variant: 'destructive'
           })
         }

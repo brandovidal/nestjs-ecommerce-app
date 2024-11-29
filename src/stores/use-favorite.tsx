@@ -21,7 +21,7 @@ export const useFavorite = create(
 
         if (existingItem) {
           return toast({
-            title: 'El producto favorito ya existe en el carrito ⛔.',
+            title: 'El producto favorito ya existe en el carrito 🚫.',
             variant: 'destructive'
           })
         }
