@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { X } from 'lucide-react'
 
 import { Button } from '@/ui/button'
+import { ProductCharacteristics } from '@/components/product-characteristics/product-characteristics'
 
 import { Product } from '@/types/product'
 
@@ -12,6 +13,7 @@ import { formatPrice } from '@/lib/format-price'
 
 import { useFavorite } from '@/stores/use-favorite'
 import { useCart } from '@/stores/use-cart'
+
 
 interface FavoriteItemsProps {
   product: Product
@@ -58,16 +60,11 @@ const FavoriteItem = ({ product }: FavoriteItemsProps) => {
           className="w-24 h-24 object-cover aspect-square group-hover:rotate-6 transition duration-300 ease-in-out"
         />
       </div>
-      <div className="flex justify-center flex-1 px-6">
-        <div>
+      <div className="flex flex-1 justify-center sm:justify-between px-6">
+        <div className='flex flex-col gap-1'>
           <h4 className="text-lg-font-bold">{name}</h4>
           <p className="font-bold">{formatPrice(price)}</p>
-          <div className="flex justify-stretch items-center gap-3">
-            <p className="px-2 py-1 text-gray-600 dark:text-gray-400 border border-gray-600 dark:border-gray-400 rounded-full w-fit text-sm">
-              {taste}
-            </p>
-            <p className="px-2 py-1 text-red-600 dark:text-red-400 border border-red-600 dark:border-red-400 rounded-full w-fit text-sm">{origin}</p>
-          </div>
+          <ProductCharacteristics taste={taste} origin={origin} />
           <Button className="mt-5 rounded-full" onClick={handleAddItemCart(product)}>
             Agregar al carrito
           </Button>

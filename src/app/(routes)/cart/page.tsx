@@ -25,7 +25,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="max-x-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+      <section className="max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold mb-5">Carrito</h1>
         <div className="grid sm:grid-cols-2 sm:gap-5">
           <div>

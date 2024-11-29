@@ -18,7 +18,7 @@ export default function Page() {
   }
 
   return (
-    <section className="max-x-6xl mx-auto py-4 sm:py-32 sm:px-24">
+    <section className="max-w-6xl mx-auto py-4 sm:py-32 sm:px-24">
       <div className="grid sm:grid-cols-2">
         <div>
           <ProductCarousel images={data.images} />

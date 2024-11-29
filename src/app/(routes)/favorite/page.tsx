@@ -15,7 +15,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="max-x-4xl py-4 sm:py-32 sm:px-24 mx-auto">
+      <section className="max-w-4xl py-4 sm:py-32 sm:px-24 mx-auto">
         <h1 className="sm:text-2xl font-semibold">Productos favoritos</h1>
         <div>
           <div>{!hasFavoriteItems && <p>No hay productos favoritos disponibles</p>}</div>
